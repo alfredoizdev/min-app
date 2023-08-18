@@ -32,4 +32,10 @@ call
 http://locahos:8000/api/seed
 ```
 
-## demo of this app
+## api can use
+
+```
+    GET api/seed - populate the database
+    GET api/cars - fetch list of the cars
+    GET api/car/{id} - fetch a car
+```
