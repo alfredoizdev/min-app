@@ -1,0 +1,35 @@
+version: "3"
+services:
+  client:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    stdin_open: true
+    ports:
+      - 3000:3000
+    networks:
+      - net-app
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    environment:
+      - NODE_ENV=production
+      - MONGO_URI_PROD=mongodb://mongo:27017/myapp
+      - PORT=8000
+    networks:
+      - net-app
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    networks:
+      - net-app
+networks:
+  net-app:
+    driver: bridge
+
