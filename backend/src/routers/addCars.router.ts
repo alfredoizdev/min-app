@@ -4,6 +4,6 @@ import hasPermision from "@middleware/userAuth";
 
 const router = express.Router();
 
-router.post("/api/cars", hasPermision, addCarController);
+router.post("/api/add", hasPermision, addCarController);
 
 export { router as addCarRouter };

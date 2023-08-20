@@ -38,4 +38,7 @@ http://locahos:8000/api/seed
     GET api/seed - populate the database
     GET api/cars - fetch list of the cars
     GET api/car/{id} - fetch a car
+    POST api/add - add new car
+    POST api/login - auth default after populate db (user: alfredodevelop@gmail.com, pass: 123456)
+    GET api/getuser - fetch email of the current user
 ```

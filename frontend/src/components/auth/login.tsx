@@ -11,6 +11,9 @@ import { useMutation } from "@tanstack/react-query";
 import { loginUser } from "../../services/auth.services";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { isEmail } from "../../utils/validations";
+import { useEffect, useState } from "react";
+import CustomNotification from "../CustomNotification/CustomNotification";
 
 const LoginContent = styled("div")`
 	display: flex;
@@ -29,16 +32,28 @@ interface FormData {
 
 const Login = () => {
 	const navigate = useNavigate();
+	const [message, setMessage] = useState("");
+	const [open, setOpen] = useState(false);
+
+	useEffect(() => {
+		const token = localStorage.getItem("token") || null;
+		if (token) {
+			navigate("/");
+		}
+	}, [navigate]);
 
 	const authUser = useMutation({
 		mutationFn: loginUser,
 		onSuccess: (data) => {
+			setOpen(false);
+			setMessage("");
 			reset();
 			localStorage.setItem("token", data);
 			navigate("/");
 		},
-		onError() {
-			console.log("error");
+		onError({ response }) {
+			setOpen(true);
+			setMessage(response.data?.message);
 		},
 	});
 
@@ -83,6 +98,7 @@ const Login = () => {
 									fullWidth
 									{...register("formValue.email", {
 										required: "The Email field are required",
+										validate: isEmail,
 									})}
 									error={!!errors.formValue?.email}
 									helperText={errors.formValue?.email?.message}
@@ -112,6 +128,7 @@ const Login = () => {
 					</Card>
 				</form>
 			</LoginContent>
+			<CustomNotification open={open} setOpen={setOpen} message={message} />
 		</Grid>
 	);
 };
