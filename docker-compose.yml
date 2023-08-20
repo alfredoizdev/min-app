@@ -19,6 +19,7 @@ services:
       - NODE_ENV=production
       - MONGO_URI_PROD=mongodb://mongo:27017/myapp
       - PORT=8000
+      - JWT_SECRET_SEED=my-great-secret-is-hardwork
     networks:
       - net-app
     depends_on:

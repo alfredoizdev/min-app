@@ -13,7 +13,7 @@ export const getCars = async (): Promise<ICar[]> => {
 
 export const addCar = async (params: ICar): Promise<ICar> => {
 	const { data } = await fetchApi.post(
-		"cars",
+		"add",
 		{ params },
 		{
 			headers: {
