@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
 import USDollar from "../helpers/usDollars";
+import Loading from "../Loading/Loading";
 
 const HeaderBar = styled("div")`
 	display: flex;
@@ -24,7 +25,7 @@ const Car = () => {
 	);
 
 	if (isLoading) {
-		return <span>Loading...</span>;
+		return <Loading />;
 	}
 
 	if (isError) {

@@ -75,7 +75,7 @@ const AddCar = ({ open, setOpen }: Props) => {
 		return null;
 	};
 
-	const handleOnSubmit = async ({ formValue }: FormData) => {
+	const handleOnSubmit = ({ formValue }: FormData) => {
 		createCar.mutate(formValue);
 	};
 

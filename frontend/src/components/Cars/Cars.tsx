@@ -10,6 +10,7 @@ import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import AddCar from "../AddCar/AddCar";
 import { useNavigate } from "react-router-dom";
+import Loading from "../Loading/Loading";
 
 const columns: GridColDef[] = [
 	{ field: "mark", headerName: "Mark", width: 90 },
@@ -72,7 +73,7 @@ export default function Cars() {
 	};
 
 	if (isLoading) {
-		return <span>Loading...</span>;
+		return <Loading />;
 	}
 
 	if (isError) {
