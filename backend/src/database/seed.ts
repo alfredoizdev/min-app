@@ -1,3 +1,6 @@
+import { IUser } from "@interfaces/User";
+import bcryptjs from "bcryptjs";
+
 type ValidTypes = "Truck" | "Sedan" | "SUV";
 
 interface SeedProduct {
@@ -12,6 +15,7 @@ interface SeedProduct {
 
 interface SeedData {
 	products: SeedProduct[];
+	users: IUser[];
 }
 
 export const initialData: SeedData = {
@@ -42,6 +46,14 @@ export const initialData: SeedData = {
 			color: "Red",
 			category: "Sedan",
 			millage: 120000,
+		},
+	],
+	users: [
+		{
+			name: "Alex",
+			last: "Con",
+			email: "alfredo@gmail.com",
+			password: bcryptjs.hashSync("123456"),
 		},
 	],
 };

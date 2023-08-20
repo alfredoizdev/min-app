@@ -7,6 +7,8 @@ import { carsRouter } from "@routers/cars.router";
 import { addCarRouter } from "@routers/addCars.router";
 import { seedDatabaseRouter } from "@routers/seedDatabase.router";
 import { carDetailRouter } from "@routers/carDetail.router";
+import { loginRouter } from "@routers/login.router";
+import { getUserRouter } from "@routers/getUser.router";
 
 dotenv.config();
 
@@ -36,6 +38,8 @@ const Start = async () => {
 	app.use(addCarRouter);
 	app.use(seedDatabaseRouter);
 	app.use(carDetailRouter);
+	app.use(loginRouter);
+	app.use(getUserRouter);
 
 	app.listen(port, () => {
 		console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
