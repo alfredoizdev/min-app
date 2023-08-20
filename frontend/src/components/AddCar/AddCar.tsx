@@ -2,7 +2,7 @@ import Drawer from "@mui/material/Drawer";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
-import { styled } from "@mui/material";
+import { FormHelperText, styled } from "@mui/material";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
@@ -140,14 +140,21 @@ const AddCar = ({ open, setOpen }: Props) => {
 							<Select
 								labelId='demo-simple-select-label'
 								id='demo-simple-select'
-								label='Age'
-								defaultValue={"Sedan"}
-								{...register("formValue.category")}
+								label='Category'
+								{...register("formValue.category", {
+									required: "The category field are required",
+								})}
+								error={!!errors.formValue?.category}
 							>
 								<MenuItem value={"Sedan"}>Sedan</MenuItem>
 								<MenuItem value={"Truck"}>Truck</MenuItem>
 								<MenuItem value={"SUV"}>SUV</MenuItem>
 							</Select>
+							{!!errors.formValue?.category && (
+								<FormHelperText error={true}>
+									{errors.formValue?.category?.message}
+								</FormHelperText>
+							)}
 						</FormControl>
 					</Box>
 					<Box paddingY={2}>

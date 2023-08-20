@@ -122,7 +122,7 @@ const Login = () => {
 						</CardContent>
 						<CardActions>
 							<Button type='submit' variant='contained' fullWidth>
-								Save
+								Login
 							</Button>
 						</CardActions>
 					</Card>
