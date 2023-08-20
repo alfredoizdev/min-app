@@ -29,7 +29,7 @@ npm run dev
 call
 
 ```
-http://locahos:8000/api/seed
+http://localhost:8000/api/seed
 ```
 
 ## api can use
